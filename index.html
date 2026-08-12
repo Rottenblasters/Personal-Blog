@@ -1,0 +1,132 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="Personal portfolio and writing on mobile engineering, software, and artificial intelligence."
+    />
+    <meta name="theme-color" content="#f3f0e8" />
+    <title>Portfolio — Engineer & Writer</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Manrope:wght@400;500;600&family=Newsreader:opsz,wght@6..72,400;6..72,500&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <header class="site-header">
+      <a class="wordmark" href="#top" aria-label="Go to home">
+        <span class="wordmark-mark">YN</span>
+        <span class="wordmark-name" data-name>Your Name</span>
+      </a>
+      <button class="menu-toggle" aria-expanded="false" aria-controls="site-nav">
+        <span></span><span></span>
+        <span class="sr-only">Open menu</span>
+      </button>
+      <nav id="site-nav" class="site-nav" aria-label="Main navigation">
+        <a href="#about">About</a>
+        <a href="#work">Work</a>
+        <a href="#blog">Writing</a>
+        <a href="#contact">Contact</a>
+      </nav>
+    </header>
+
+    <main id="top">
+      <section class="hero" aria-labelledby="hero-title">
+        <p class="eyebrow"><span class="status-dot"></span><span data-availability></span></p>
+        <h1 id="hero-title">
+          Engineering useful things.<br />
+          <em>Writing what I learn.</em>
+        </h1>
+        <div class="hero-bottom">
+          <p class="hero-intro" data-intro></p>
+          <a class="round-link" href="#work" aria-label="See selected work">
+            <span>Explore</span>
+            <span aria-hidden="true">↘</span>
+          </a>
+        </div>
+        <div class="hero-meta">
+          <span data-role></span>
+          <span data-location></span>
+          <span id="local-time">Local time</span>
+        </div>
+      </section>
+
+      <section id="about" class="section about-section">
+        <div class="section-label">
+          <span>01</span>
+          <p>About me</p>
+        </div>
+        <div class="about-content">
+          <h2>I care about the invisible details that make software feel effortless.</h2>
+          <p class="about-copy" data-about></p>
+          <div class="skills" data-skills aria-label="Skills"></div>
+          <a class="text-link resume-link" data-resume href="resume.pdf" target="_blank">
+            View résumé <span aria-hidden="true">↗</span>
+          </a>
+        </div>
+      </section>
+
+      <section id="work" class="section work-section">
+        <div class="section-heading">
+          <div class="section-label">
+            <span>02</span>
+            <p>Selected work</p>
+          </div>
+          <p>A few projects where engineering met a real problem.</p>
+        </div>
+        <div class="project-list" data-projects></div>
+      </section>
+
+      <section id="blog" class="section blog-section">
+        <div class="section-heading">
+          <div class="section-label">
+            <span>03</span>
+            <p>Writing</p>
+          </div>
+          <p>Notes on engineering systems, performance, and applied AI.</p>
+        </div>
+        <div class="blog-layout">
+          <div class="blog-featured" data-featured-post></div>
+          <div class="post-list" data-posts></div>
+        </div>
+      </section>
+
+      <section id="contact" class="contact-section">
+        <p class="eyebrow">Have an interesting problem?</p>
+        <h2>Let’s build something<br /><em>worth talking about.</em></h2>
+        <a class="email-link" data-email-link href="mailto:you@example.com">
+          <span data-email>you@example.com</span>
+          <span aria-hidden="true">↗</span>
+        </a>
+      </section>
+    </main>
+
+    <footer>
+      <p>© <span data-year></span> <span data-name>Your Name</span></p>
+      <div>
+        <a data-github href="#">GitHub</a>
+        <a data-linkedin href="#">LinkedIn</a>
+        <a href="#top">Back to top ↑</a>
+      </div>
+    </footer>
+
+    <div class="reader" data-reader aria-hidden="true">
+      <button class="reader-backdrop" data-close-reader aria-label="Close article"></button>
+      <article class="reader-panel" role="dialog" aria-modal="true" aria-labelledby="reader-title">
+        <div class="reader-toolbar">
+          <p>Article</p>
+          <button data-close-reader>Close <span aria-hidden="true">×</span></button>
+        </div>
+        <div class="reader-content" data-reader-content></div>
+      </article>
+    </div>
+
+    <script src="content.js"></script>
+    <script src="app.js"></script>
+  </body>
+</html>
