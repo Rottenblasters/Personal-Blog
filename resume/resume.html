@@ -1,128 +1,194 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-<meta charset="UTF-8">
-<title>Anshul Singh Resume</title>
-<style>
-  @page {
-    size: A4;
-    margin: 12mm 14mm;
-  }
-  * { box-sizing: border-box; }
-  body {
-    font-family: Calibri, Arial, Helvetica, sans-serif;
-    color: #111;
-    margin: 0 auto;
-    padding: 0;
-    max-width: 210mm;
-    font-size: 10pt;
-    line-height: 1.28;
-  }
-  .header {
-    text-align: center;
-    padding-bottom: 6px;
-    margin-bottom: 10px;
-  }
-  .name {
-    font-size: 20pt;
-    font-weight: 700;
-    letter-spacing: 0.6px;
-    margin: 0 0 3px;
-    text-transform: uppercase;
-    line-height: 1.1;
-  }
-  .contact-info {
-    font-size: 9.5pt;
-    color: #222;
-  }
-  .contact-info a {
-    color: #0a66c2;
-    text-decoration: underline;
-  }
-  .contact-info a:hover {
-    color: #004182;
-  }
-  .section { margin-bottom: 9px; }
-  .section-title {
-    font-size: 10.5pt;
-    font-weight: 700;
-    text-transform: uppercase;
-    letter-spacing: 0.5px;
-    border-bottom: 1px solid #444;
-    padding-bottom: 1px;
-    margin: 0 0 5px;
-  }
-  .entry { margin-bottom: 7px; }
-  .entry:last-child { margin-bottom: 0; }
-  .row {
-    display: flex;
-    justify-content: space-between;
-    align-items: baseline;
-    gap: 12px;
-    width: 100%;
-  }
-  .row-left { flex: 1; min-width: 0; }
-  .row-right {
-    flex: 0 0 auto;
-    white-space: nowrap;
-    font-size: 9.5pt;
-    color: #333;
-    text-align: right;
-  }
-  .org { font-weight: 700; font-size: 10.5pt; }
-  .meta { font-size: 9.5pt; color: #333; }
-  .role {
-    font-weight: 700;
-    font-style: italic;
-    font-size: 10pt;
-    margin-top: 2px;
-  }
-  .sub-role { margin-top: 4px; }
-  ul {
-    margin: 2px 0 0;
-    padding-left: 16px;
-  }
-  li {
-    margin-bottom: 2px;
-    text-align: justify;
-    hyphens: auto;
-    -webkit-hyphens: auto;
-  }
-  li:last-child { margin-bottom: 0; }
-  .skills-line {
-    margin: 0 0 2px;
-    text-align: justify;
-  }
-  .skills-line strong { font-weight: 700; }
-  @media print {
-    body { max-width: none; }
-  }
-</style>
+  <meta charset="UTF-8">
+  <title>Anshul Singh Resume</title>
+  <style>
+    @page {
+      size: A4;
+      margin: 10mm 12mm;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: Calibri, Arial, Helvetica, sans-serif;
+      color: #111;
+      margin: 0 auto;
+      padding: 0;
+      max-width: 210mm;
+      font-size: 9.5pt;
+      line-height: 1.22;
+    }
+
+    .header {
+      text-align: center;
+      padding-bottom: 4px;
+      margin-bottom: 10px;
+    }
+
+    .name {
+      font-size: 18pt;
+      font-weight: 700;
+      letter-spacing: 0.5px;
+      margin: 0 0 2px;
+      text-transform: uppercase;
+      line-height: 1.1;
+    }
+
+    .contact-info {
+      font-size: 9pt;
+      color: #222;
+    }
+
+    .section {
+      margin-bottom: 11px;
+    }
+
+    .section-title {
+      font-size: 10pt;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.4px;
+      border-bottom: 1px solid #444;
+      padding-bottom: 1px;
+      margin: 0 0 5px;
+    }
+
+    .summary {
+      margin: 0;
+      text-align: justify;
+    }
+
+    .entry {
+      margin-bottom: 8px;
+    }
+
+    .entry:last-child {
+      margin-bottom: 0;
+    }
+
+    .row {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      gap: 12px;
+      width: 100%;
+    }
+
+    .row-left {
+      flex: 1;
+      min-width: 0;
+    }
+
+    .row-right {
+      flex: 0 0 auto;
+      white-space: nowrap;
+      font-size: 9pt;
+      color: #333;
+      text-align: right;
+    }
+
+    .org {
+      font-weight: 700;
+      font-size: 10pt;
+      margin: 0;
+    }
+
+    .meta {
+      font-weight: 400;
+      font-size: 9.5pt;
+      color: #333;
+    }
+
+    .role-line {
+      font-size: 9.5pt;
+      margin: 1px 0 0;
+    }
+
+    .role-line .role {
+      font-weight: 700;
+      font-style: italic;
+    }
+
+    .degree {
+      margin: 0;
+      font-size: 9pt;
+      color: #333;
+    }
+
+    .sub-role {
+      margin-top: 3px;
+    }
+
+    ul {
+      margin: 1px 0 0;
+      padding-left: 15px;
+    }
+
+    li {
+      margin-bottom: 1px;
+      text-align: justify;
+    }
+
+    li:last-child {
+      margin-bottom: 0;
+    }
+
+    .skills-line {
+      margin: 0 0 1px;
+      text-align: justify;
+    }
+
+    .skills-line strong {
+      font-weight: 700;
+    }
+
+    @media print {
+      body {
+        max-width: none;
+      }
+    }
+  </style>
 </head>
+
 <body>
 
   <header class="header">
     <h1 class="name">Anshul Singh</h1>
     <div class="contact-info">
-      +91-9324780331 | as22791@nyu.edu | <a href="https://www.linkedin.com/in/anshul-singh-b58790197/">LinkedIn</a> | New York City, USA
+      New York City, USA | as22791@nyu.edu | +1 (929) 363-2336 | https://www.linkedin.com/in/anshul-singh-b58790197/
     </div>
   </header>
+
+  <section class="section">
+    <h2 class="section-title">Professional Summary</h2>
+    <p class="summary">
+      Full-Stack and Mobile Systems Engineer with 3+ years of experience architecting high-scale iOS, Android, and React Native
+      platforms serving over 70 million monthly active users. Specialized in low-latency mobile runtimes, automated data
+      processing pipelines, and performance optimization. Master of Science candidate at NYU Courant actively researching
+      AI Systems Architecture, ML Infrastructure, and Edge Computing.
+    </p>
+  </section>
 
   <section class="section">
     <h2 class="section-title">Education</h2>
     <div class="entry">
       <div class="row">
-        <div class="row-left"><span class="org">New York University (NYU Courant)</span> <span class="meta">— New York, USA</span></div>
-        <div class="row-right">Aug 2026 – May 2028</div>
+        <div class="row-left"><p class="org">New York University (NYU Courant) - New York, USA</p></div>
+        <div class="row-right">Aug 2026 - May 2028</div>
       </div>
-      <div class="meta">Master of Science in Computer Science</div>
+      <p class="degree">Master of Science in Computer Science</p>
     </div>
     <div class="entry">
       <div class="row">
-        <div class="row-left"><span class="org">Indian Institute of Technology (BHU)</span> <span class="meta">— Varanasi, India</span></div>
-        <div class="row-right">Aug 2019 – June 2023</div>
+        <div class="row-left"><p class="org">Indian Institute of Technology (BHU) - Varanasi, India</p></div>
+        <div class="row-right">Aug 2019 - June 2023</div>
       </div>
-      <div class="meta">Bachelor of Technology in Engineering | GPA: 8.98/10</div>
+      <p class="degree">Bachelor of Technology in Metallurgical Engineering | GPA: 8.98/10</p>
     </div>
   </section>
 
@@ -130,74 +196,76 @@
     <h2 class="section-title">Experience</h2>
 
     <div class="entry">
-      <div class="row">
-        <div class="row-left"><span class="org">Myntra</span> <span class="meta">— Walmart subsidiary; India's largest fashion app (<strong>70M MAU</strong>)</span></div>
-        <div class="row-right">Bangalore, India</div>
-      </div>
+      <p class="org">Myntra <span class="meta">- Bangalore, India (A Walmart subsidiary and India's largest fashion app with 70M MAU)</span></p>
 
       <div class="sub-role">
-        <div class="row">
-          <div class="row-left role">Senior Software Engineer</div>
-          <div class="row-right">Jan 2026 – July 2026</div>
+        <div class="row role-line">
+          <div class="row-left"><span class="role">Senior Software Engineer</span></div>
+          <div class="row-right">Jan 2026 - July 2026</div>
         </div>
         <ul>
-          <li><strong>Armitage Performance Platform:</strong> Architected a cross-platform mobile performance monitoring system with <strong>Kotlin Multiplatform</strong> and <strong>React Native JSI</strong> to measure real-time UI/JS FPS, CPU, memory, and launch vitals across iOS and Android, with a device-tier scoring engine achieving <strong>0.5%</strong> deviation from Xcode Instruments at only <strong>1–2% CPU overhead</strong>.</li>
-          <li><strong>Mobile Platform Modernization:</strong> Migrated Android infrastructure to <strong>API 35</strong> with Edge-to-Edge and <strong>16KB</strong> page-size support; upgraded <strong>React Native</strong> from <strong>0.73.11</strong> to <strong>0.78.3</strong> with <strong>React 19</strong>, and contributed to New Architecture migration.</li>
-          <li><strong>Categories Page Revamp:</strong> Led frontend revamp of the category browsing page using <strong>Layout Engine</strong>-driven UI components, improving responsiveness, enabling scalable experimentation and reducing user steps to PDP across high-traffic shopping journeys.
-          </li>
+          <li>Architected Armitage, a cross-platform mobile performance monitoring system using <strong>Kotlin Multiplatform (KMP)</strong>
+            and <strong>React Native JSI</strong> to track real-time UI/JS FPS, CPU, memory, and launch vitals across iOS and Android
+            with under <strong>2% CPU overhead</strong> and <strong>0.5%</strong> measurement deviation.</li>
+          <li>Modernized core mobile platform infrastructure by migrating Android to <strong>API 35</strong> (Edge-to-Edge and
+            <strong>16KB</strong> page-size support) and upgrading <strong>React Native</strong> to <strong>0.78.3</strong> with
+            <strong>React 19</strong>, accelerating overall application runtime.</li>
+          <li>Spearheaded the Layout Engine-driven Category Browsing page revamp, improving responsiveness, enabling scalable
+            experimentation and reducing user steps to PDP across high-traffic shopping journeys.</li>
         </ul>
       </div>
 
       <div class="sub-role">
-        <div class="row">
-          <div class="row-left role">Software Engineer</div>
-          <div class="row-right">Sept 2024 – Dec 2025</div>
+        <div class="row role-line">
+          <div class="row-left"><span class="role">Software Engineer</span></div>
+          <div class="row-right">Sept 2024 - Dec 2025</div>
         </div>
         <ul>
-          <li><strong>Product Listing Page Migration:</strong> Migrated PLP to Myntra's Layout Engine for a scalable widget-driven architecture with half-card and M-Now quick-commerce integrations, reducing latency by <strong>30%</strong> and lifting RPU/conversion by <strong>3%</strong>.</li>
-          <li><strong>Cold Launch Optimization (Android &amp; iOS):</strong> Reduced Android cold launch time by <strong>45%</strong> (<strong>2.7s → 1.4s</strong>) and improved Home Time-to-First-Display (TTFD) by <strong>~20–25%</strong>; improved iOS cold launch by <strong>~23%</strong> (<strong>970ms → 750ms</strong>) and Home TTFD by <strong>~30%</strong> through startup optimization, parallelized initialization and reduced I/O dependencies.</li>
-          <li><strong>Patch Bundle Rollouts:</strong> Integrated Android Patch Bundle Rollouts for <strong>React Native</strong> diff updates, reducing update payload size from <strong>~14MB</strong> to <strong>&lt;1MB</strong> and improving rollout reliability while lowering user data consumption.
-          </li>
-          <li><strong>Dynamic App Icon &amp; Splash:</strong> Built a remote configurable system for changing app icons and splash screens during major sale events, driving a <strong>5-8%</strong> increase in organic traffic share by ensuring cohesive visual identity of the app</li>
-          <li><strong>Halfcard Service:</strong> Architected a Layout Engine-driven modal presentation system that dynamically triggers contextual half-cards based on user interactions (scroll, load) while managing display logic via frequency capping, interval schedules, and A/B testing.</li>
-        </ul>
-      </div>
-    </div>
-
-    <div class="entry">
-      <div class="row">
-        <div class="row-left"><span class="org">FlyFin AI</span> <span class="meta">— AI tax tools for US consumers</span></div>
-        <div class="row-right">Bangalore, India</div>
-      </div>
-      <div class="sub-role">
-        <div class="row">
-          <div class="row-left role">Software Engineer</div>
-          <div class="row-right">July 2023 – Sept 2024</div>
-        </div>
-        <ul>
-          <li>Delivered multiple <strong>0-to-1</strong> tax features across the consumer app and internal <strong>CPA</strong> dashboard, owning frontend UI and backend low-level design with an extensible architecture for future product changes.</li>
-          <li>Architected an automated OCR document upload pipeline integrating <strong>AWS Textract</strong> to extract data from tax
-            documents, streamlining the user experience and driving a <strong>4x</strong> increase in successful tax filing completions</li>
-          <li>Refactored the expense classification engine into a <strong>Celery</strong> and <strong>RabbitMQ</strong> distributed system for horizontal scaling, cutting processing time for <strong>1K</strong> expenses by <strong>87%</strong> (<strong>12 mins → 1.5 mins</strong>).</li>
-          <li> Developed advanced PDF manipulation tools (display bounding boxes, zoom, rotate) using <strong>Canvas API</strong>, leveraging
-            <strong>Web Workers</strong> to optimize heavy processing, resulting in a speed up of tax document verification for ops teams.</li>
+          <li>Re-engineered Product Listing Page onto an internal Layout Engine framework with half-card and M-Now quick-commerce
+            integrations, cutting page latency by <strong>30%</strong> and lifting RPU/conversion by <strong>3%</strong>.</li>
+          <li>Engineered a remote configurable system for changing app icons and splash screens during major sale events,
+            driving a <strong>5-8%</strong> increase in organic traffic share by ensuring cohesive visual identity of the app.</li>
+          <li>Designed a Layout Engine-driven modal presentation system that dynamically triggers contextual half-cards based on
+            user interactions (scroll, load) while managing display logic via frequency capping, interval schedules, and
+            A/B testing.</li>
         </ul>
       </div>
     </div>
 
     <div class="entry">
-      <div class="row">
-        <div class="row-left"><span class="org">Udaan</span> <span class="meta">— India's largest eB2B platform (<strong>20M+</strong> orders/year)</span></div>
-        <div class="row-right">Bangalore, India</div>
-      </div>
+      <p class="org">FlyFin AI <span class="meta">- Bangalore, India (AI tax tools for US consumers)</span></p>
       <div class="sub-role">
-        <div class="row">
-          <div class="row-left role">Software Engineering Intern</div>
-          <div class="row-right">May 2022 – July 2022</div>
+        <div class="row role-line">
+          <div class="row-left"><span class="role">Software Engineer</span></div>
+          <div class="row-right">July 2023 - Sept 2024</div>
         </div>
         <ul>
-          <li>Optimized <strong>Apache Solr</strong> indexing by analyzing query patterns and restructuring schema fields, reducing search latency and improving retrieval efficiency for high-volume catalog queries.</li>
-          <li>Strengthened the <strong>CQRS</strong> sync pipeline with an automated cleanup cron to purge inactive product listings and keep the write DB and read-optimized secondary store consistent.</li>
+          <li>Delivered multiple <strong>0-to-1</strong> tax features across the consumer app and internal <strong>CPA</strong> dashboard,
+            owning frontend UI and backend low-level design with an extensible architecture for future product changes.</li>
+          <li>Architected an automated OCR document upload pipeline integrating <strong>AWS Textract</strong> to extract data from tax documents,
+            streamlining the user experience and driving a <strong>4x</strong> increase in successful tax filing completions.</li>
+          <li>Refactored the expense classification engine into a <strong>Celery</strong> and <strong>RabbitMQ</strong> distributed system
+            for horizontal scaling, cutting processing time for <strong>1K</strong> expenses by <strong>87%</strong>
+            (<strong>12 mins to 1.5 mins</strong>).</li>
+          <li>Developed client-side PDF verification tools (showing bounding boxes, autoscrolling to tax field) using
+            <strong>Canvas API</strong> and <strong>Web Workers</strong> to offload heavy processing from main UI threads,
+            accelerating ops document verification throughput by <strong>40%</strong>.</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="entry">
+      <p class="org">Udaan <span class="meta">- Bangalore, India (India's largest eB2B platform with 20M orders per year)</span></p>
+      <div class="sub-role">
+        <div class="row role-line">
+          <div class="row-left"><span class="role">Software Engineering Intern</span></div>
+          <div class="row-right">May 2022 - July 2022</div>
+        </div>
+        <ul>
+          <li>Optimized <strong>Apache Solr</strong> indexing by restructuring schema fields, reducing search latency
+            for high-volume catalog queries.</li>
+          <li>Enhanced the <strong>CQRS</strong> synchronization pipeline by implementing automated cleanup cron jobs,
+            maintaining <strong>99.9%</strong> data consistency between primary write databases and read stores.</li>
         </ul>
       </div>
     </div>
@@ -205,10 +273,13 @@
 
   <section class="section">
     <h2 class="section-title">Technical Skills</h2>
-    <p class="skills-line"><strong>Languages:</strong> Java, Python, JavaScript, Kotlin, Objective-C, Swift, SQL (PostgreSQL), MongoDB</p>
-    <p class="skills-line"><strong>Frameworks &amp; Libraries:</strong> React Native, React.js, Django, Node.js</p>
-    <p class="skills-line"><strong>Tools &amp; Platforms:</strong> Git, Android Studio, Xcode, VS Code, AWS (Textract), Celery, RabbitMQ, Apache Solr</p>
+    <p class="skills-line"><strong>Languages:</strong> Java, Python, JavaScript, TypeScript, Kotlin, Objective-C, Swift,
+      SQL</p>
+    <p class="skills-line"><strong>Frameworks:</strong> React.js, Django, Node.js, React Native</p>
+    <p class="skills-line"><strong>Databases:</strong> PostgreSQL, MongoDB, Apache Solr</p>
+    <p class="skills-line"><strong>Tools:</strong> Git, AWS (Textract), Celery, RabbitMQ, Android Studio, Xcode</p>
   </section>
 
 </body>
+
 </html>
