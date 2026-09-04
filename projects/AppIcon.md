@@ -26,7 +26,7 @@ Once cached, the app evaluates whether an icon or splash transition is required.
 
 ## iOS Implementation: Native Dynamic Icons
 
-Apple provides official native support for programmatic icon changes.
+Apple provides official native support for programmatic icon changes via [`setAlternateIconName(_:completionHandler:)`](https://developer.apple.com/documentation/uikit/uiapplication/setalternateiconname(_:completionhandler:)).
 
 - **Configuration:** Alternate icon names are declared in `Info.plist` under `CFBundleIcons` → `CFBundleAlternateIcons`.
 - **Execution:** We invoke the native API:
@@ -130,7 +130,15 @@ When we introduced Activity Aliases, this decoding and routing flow broke in two
 
 ## Dynamic Splash Screens: Lightweight Lottie Vectors
 
-Unlike launcher icons, splash screen assets do not require pre-registration with the OS manifest.
+Unlike launcher icons, splash screen assets do not require pre-registration with the OS manifest. We also did **not** rely on Android’s system Splash Screen API or iOS launch-storyboard swaps for the event experience. On both platforms we owned a custom root view that hosts two children in the launch hierarchy:
 
-- **Remote Vector Payload:** The Switch JSON config delivers a direct URL pointing to a lightweight Lottie animation file hosted on our CDN.
-- **On-Boot Rendering:** On cold boot, our splash view reads the locally cached animation file. It plays a smooth, high-quality event animation instantly while background initialization routines (API prefetches, ReactActivity initialization) execute in parallel.
+1. An **animation / splash view** for the event-branded boot experience
+   - **Android:** a [Lottie](https://airbnb.io/lottie/) [`LottieAnimationView`](https://github.com/airbnb/lottie-android) ([lottie-android](https://github.com/airbnb/lottie-android))
+   - **iOS:** a [Lottie](https://airbnb.io/lottie/) animation view from [lottie-ios](https://github.com/airbnb/lottie-ios) layered in a native `UIView` hierarchy
+2. A **React view container** that holds the main React Native surface
+   - **Android:** the React root hosted by `ReactActivity`
+   - **iOS:** the React Native root view (e.g. `RCTRootView` / RN host view) embedded as a sibling under the same parent
+
+- **Remote Vector Payload:** The Switch JSON config delivers a direct URL pointing to a lightweight Lottie animation file hosted on our CDN. The animation is cached locally so cold start can play it without waiting on the network.
+- **View Handoff on Boot (Android & iOS):** When the root view is created, the splash animation view is shown/enabled and the React container is hidden. While the animation plays, React Native initialization (JS runtime bring-up and API prefetches) continues in the background. Once **both** conditions are met—the splash animation has completed **and** React is ready—we hide the animation view and make the React view visible, handing the user into the live app without a hard cut or an extra app update.
+
