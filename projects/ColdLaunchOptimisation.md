@@ -86,28 +86,31 @@ Instead of initializing each library sequentially on the main thread, the custom
 
 ```text
 [ androidx.startup Execution Window ]
-                │
-                ▼
-        AsyncInitializer.create()
-                │
-    ┌───────────┴───────────┐
-    │ Main Thread: Latch Await │
-    │ (Timeout: 2000ms max)    │
-    └───────────┬───────────┘
-                │
-    ┌───────────┼───────────┬───────────┬───────────┐
-    ▼           ▼           ▼           ▼
-[ Coroutine 1 ] [ Coroutine 2 ] [ Coroutine 3 ] [ Coroutine 4 ]
-(Dispatchers.IO) (Dispatchers.IO) (Dispatchers.IO) (Dispatchers.IO)
-    │           │           │           │
-SDK A (180ms) SDK B (250ms) SDK C (90ms) SDK D (140ms)
-    │           │           │           │
-latch.countDown() ...
-                │
-    [ Latch Reaches 0 OR Timeout ]
-                │
-                ▼
-Main Thread Unblocks & Continues Application.onCreate()
+                              │
+                              ▼
+                  AsyncInitializer.create()
+                              │
+                ┌─────────────┴─────────────┐
+                │  Main Thread: Latch Await │
+                │   (Timeout: 2000ms max)   │
+                └─────────────┬─────────────┘
+                              │
+        ┌─────────────┬───────┴───────┬─────────────┐
+        │             │               │             │
+        ▼             ▼               ▼             ▼
+ ┌──────────────┐ ┌──────────────┐ ┌──────────────┐ ┌──────────────┐
+ │ Coroutine 1  │ │ Coroutine 2  │ │ Coroutine 3  │ │ Coroutine 4  │
+ │Dispatchers.IO│ │Dispatchers.IO│ │Dispatchers.IO│ │Dispatchers.IO│
+ │ SDK A 180ms  │ │ SDK B 250ms  │ │ SDK C  90ms  │ │ SDK D 140ms  │
+ │ countDown()  │ │ countDown()  │ │ countDown()  │ │ countDown()  │
+ └──────┬───────┘ └──────┬───────┘ └──────┬───────┘ └──────┬───────┘
+        │                │                │                │
+        └────────────────┴───────┬────────┴────────────────┘
+                                 │
+                 [ Latch Reaches 0 OR Timeout ]
+                                 │
+                                 ▼
+       Main Thread Unblocks & Continues Application.onCreate()
 ```
 
 ### Execution Timeline Comparison
