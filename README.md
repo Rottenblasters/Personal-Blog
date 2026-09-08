@@ -8,21 +8,22 @@ Netlify, Vercel, or any static web server.
 Open `content.js`. This is the only file you need for routine updates:
 
 - Edit `profile` to change your name, bio, links, skills, and email.
-- Add or remove entries in `projects`.
-- Add or remove entries in `posts`.
+- Edit `education` for schools and degrees.
+- Edit `experience` for work history.
+- Add or remove entries in `projects` (case studies can point to Markdown files under `projects/`).
 
-Place your PDF résumé in this folder as `resume.pdf`, or change the `resume`
-path in `content.js`.
+Place your PDF résumé in `resume/` (for example `resume/Anshul_Singh_Resume.pdf`), or change the `resume`
+path in `content.js`. Case-study Markdown lives under `projects/`.
 
-## Add a blog post
+## Add a project case study
 
-1. Create a Markdown file in this folder, for example `my-new-post.md`.
-2. Add its title, excerpt, date, category, reading time, and filename to the
-   `posts` list in `content.js`.
-3. Set `featured: true` if it should be the large highlighted article.
+1. Create a Markdown file under `projects/`, for example `projects/my-case-study.md`.
+2. Add a matching entry to the `projects` list in `content.js` with `link` set to that file.
+3. Visitors can open the case study from the Projects section.
 
 The included Markdown reader supports headings, bold and italic text, links,
-lists, quotes, code blocks, horizontal rules, and tables.
+lists, quotes, code blocks, horizontal rules, tables, images, and videos
+(`.mp4`, `.webm`, `.ogg`, `.mov` via the same `![alt](path)` syntax as images).
 
 ## Preview locally
 

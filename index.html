@@ -5,10 +5,22 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta
       name="description"
-      content="Personal portfolio and writing on mobile engineering, software, and artificial intelligence."
+      content="Anshul Singh — Full-Stack and Mobile Systems Engineer. Portfolio covering experience and projects in mobile performance, platforms, and applied AI."
     />
-    <meta name="theme-color" content="#f3f0e8" />
-    <title>Portfolio — Engineer & Writer</title>
+    <meta name="theme-color" content="#1a1612" />
+    <title>Anshul Singh — Software Engineer</title>
+    <script>
+      (function () {
+        try {
+          var saved = localStorage.getItem("theme");
+          var prefersLight = window.matchMedia("(prefers-color-scheme: light)").matches;
+          var theme = saved || (prefersLight ? "light" : "dark");
+          document.documentElement.setAttribute("data-theme", theme);
+        } catch (error) {
+          document.documentElement.setAttribute("data-theme", "dark");
+        }
+      })();
+    </script>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
@@ -19,95 +31,148 @@
   </head>
   <body>
     <header class="site-header">
-      <a class="wordmark" href="#top" aria-label="Go to home">
-        <span class="wordmark-mark">YN</span>
-        <span class="wordmark-name" data-name>Your Name</span>
-      </a>
-      <button class="menu-toggle" aria-expanded="false" aria-controls="site-nav">
-        <span></span><span></span>
-        <span class="sr-only">Open menu</span>
-      </button>
-      <nav id="site-nav" class="site-nav" aria-label="Main navigation">
-        <a href="#about">About</a>
-        <a href="#work">Work</a>
-        <a href="#blog">Writing</a>
-        <a href="#contact">Contact</a>
-      </nav>
+      <div class="brand">
+        <a class="wordmark" href="#top" aria-label="Go to home">
+          <span class="wordmark-mark">AS</span>
+          <span class="wordmark-name" data-name>Anshul Singh</span>
+        </a>
+        <div class="header-contact">
+          <a
+            class="header-contact-link"
+            data-email-link
+            href="mailto:mail.anshul.singh@gmail.com"
+            aria-label="Email Anshul Singh"
+          >
+            <svg class="header-contact-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+              <path
+                fill="currentColor"
+                d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4-8 5-8-5V6l8 5 8-5v2z"
+              />
+            </svg>
+          </a>
+          <a
+            class="header-contact-link"
+            data-linkedin
+            href="https://www.linkedin.com/in/anshul-singh-b58790197/"
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="LinkedIn profile"
+          >
+            <svg class="header-contact-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+              <path
+                fill="currentColor"
+                d="M20.45 20.45h-3.56v-5.57c0-1.33-.03-3.04-1.85-3.04-1.85 0-2.14 1.45-2.14 2.94v5.67H9.35V9h3.41v1.56h.05c.47-.9 1.64-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.45v6.29zM5.34 7.43a2.06 2.06 0 1 1 0-4.12 2.06 2.06 0 0 1 0 4.12zM7.12 20.45H3.56V9h3.56v11.45zM22.23 0H1.77C.79 0 0 .77 0 1.73v20.54C0 23.23.79 24 1.77 24h20.46c.98 0 1.77-.77 1.77-1.73V1.73C24 .77 23.21 0 22.23 0z"
+              />
+            </svg>
+          </a>
+        </div>
+      </div>
+      <div class="header-actions">
+        <button class="menu-toggle" aria-expanded="false" aria-controls="site-nav">
+          <span></span><span></span>
+          <span class="sr-only">Open menu</span>
+        </button>
+        <nav id="site-nav" class="site-nav" aria-label="Main navigation">
+          <a href="#intro">Intro</a>
+          <a href="#experience">Experience</a>
+          <a href="#projects">Projects</a>
+          <a data-resume href="resume/Anshul_Singh_Resume.pdf" target="_blank" rel="noopener noreferrer">Resume</a>
+          <a href="#contact">Contact</a>
+        </nav>
+        <button
+          class="theme-toggle"
+          type="button"
+          data-theme-toggle
+          aria-label="Switch to light theme"
+        >
+          <span class="theme-icon" data-theme-toggle-icon aria-hidden="true">☀</span>
+        </button>
+      </div>
     </header>
 
     <main id="top">
-      <section class="hero" aria-labelledby="hero-title">
-        <p class="eyebrow"><span class="status-dot"></span><span data-availability></span></p>
+      <section id="intro" class="hero" aria-labelledby="hero-title">
+        <p class="hero-location" data-location>New York, NY</p>
         <h1 id="hero-title">
-          Engineering useful things.<br />
-          <em>Writing what I learn.</em>
+          Full-stack & mobile systems.<br />
+          <em>Built at consumer scale.</em>
         </h1>
         <div class="hero-bottom">
           <p class="hero-intro" data-intro></p>
-          <a class="round-link" href="#work" aria-label="See selected work">
+          <a class="round-link" href="#experience" aria-label="See experience and work">
             <span>Explore</span>
             <span aria-hidden="true">↘</span>
           </a>
         </div>
-        <div class="hero-meta">
-          <span data-role></span>
-          <span data-location></span>
-          <span id="local-time">Local time</span>
-        </div>
       </section>
 
-      <section id="about" class="section about-section">
+      <section class="section about-section">
         <div class="section-label">
           <span>01</span>
-          <p>About me</p>
+          <p>Introduction</p>
         </div>
         <div class="about-content">
-          <h2>I care about the invisible details that make software feel effortless.</h2>
-          <p class="about-copy" data-about></p>
+          <h2 data-about-headline>
+            Hi, I'm Anshul, an MS in Computer Science candidate at NYU Courant and a former Senior
+            Software Engineer.
+          </h2>
+          <div class="about-copy" data-about></div>
           <div class="skills" data-skills aria-label="Skills"></div>
-          <a class="text-link resume-link" data-resume href="resume.pdf" target="_blank">
-            View résumé <span aria-hidden="true">↗</span>
+          <a class="text-link resume-link" data-resume href="resume/Anshul_Singh_Resume.pdf" target="_blank">
+            Download résumé PDF <span aria-hidden="true">↗</span>
           </a>
         </div>
       </section>
 
-      <section id="work" class="section work-section">
+      <section id="experience" class="section resume-section">
         <div class="section-heading">
           <div class="section-label">
             <span>02</span>
-            <p>Selected work</p>
+            <p>Experience</p>
           </div>
-          <p>A few projects where engineering met a real problem.</p>
+          <p>Education and work history from shipping mobile and full-stack systems at scale.</p>
         </div>
-        <div class="project-list" data-projects></div>
+
+        <div class="resume-block">
+          <h3 class="resume-block-title">Education</h3>
+          <div class="education-list" data-education></div>
+        </div>
+
+        <div class="resume-block">
+          <h3 class="resume-block-title">Work</h3>
+          <div class="experience-list" data-experience></div>
+        </div>
       </section>
 
-      <section id="blog" class="section blog-section">
+      <section id="projects" class="section blog-section">
         <div class="section-heading">
           <div class="section-label">
             <span>03</span>
-            <p>Writing</p>
+            <p>Projects</p>
           </div>
-          <p>Notes on engineering systems, performance, and applied AI.</p>
+          <p>Selected systems and case studies from performance, platforms, and applied AI work.</p>
         </div>
-        <div class="blog-layout">
-          <div class="blog-featured" data-featured-post></div>
-          <div class="post-list" data-posts></div>
-        </div>
+        <div class="project-list" data-projects></div>
       </section>
 
       <section id="contact" class="contact-section">
         <p class="eyebrow">Have an interesting problem?</p>
         <h2>Let’s build something<br /><em>worth talking about.</em></h2>
-        <a class="email-link" data-email-link href="mailto:you@example.com">
-          <span data-email>you@example.com</span>
-          <span aria-hidden="true">↗</span>
-        </a>
+        <div class="contact-links">
+          <a class="email-link" data-email-link href="mailto:mail.anshul.singh@gmail.com">
+            <span data-email>mail.anshul.singh@gmail.com</span>
+            <span aria-hidden="true">↗</span>
+          </a>
+          <a class="email-link contact-social-link" data-linkedin href="https://www.linkedin.com/in/anshul-singh-b58790197/">
+            <span>LinkedIn</span>
+            <span aria-hidden="true">↗</span>
+          </a>
+        </div>
       </section>
     </main>
 
     <footer>
-      <p>© <span data-year></span> <span data-name>Your Name</span></p>
+      <p>© <span data-year></span> <span data-name>Anshul Singh</span></p>
       <div>
         <a data-github href="#">GitHub</a>
         <a data-linkedin href="#">LinkedIn</a>

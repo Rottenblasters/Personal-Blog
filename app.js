@@ -13,13 +13,6 @@ const escapeHtml = (value = "") =>
       })[character],
   );
 
-const formatDate = (date) =>
-  new Intl.DateTimeFormat("en", {
-    day: "numeric",
-    month: "short",
-    year: "numeric",
-  }).format(new Date(`${date}T00:00:00`));
-
 function renderProfile() {
   const { profile } = content;
   document.title = `${profile.name} — ${profile.role}`;
@@ -33,16 +26,33 @@ function renderProfile() {
     .slice(0, 2)
     .join("")
     .toUpperCase();
-  document.querySelector("[data-availability]").textContent = profile.availability;
   document.querySelector("[data-intro]").textContent = profile.intro;
-  document.querySelector("[data-role]").textContent = profile.role;
   document.querySelector("[data-location]").textContent = profile.location;
-  document.querySelector("[data-about]").textContent = profile.about;
-  document.querySelector("[data-email]").textContent = profile.email;
-  document.querySelector("[data-email-link]").href = `mailto:${profile.email}`;
-  document.querySelector("[data-resume]").href = profile.resume;
-  document.querySelector("[data-github]").href = profile.social.github;
-  document.querySelector("[data-linkedin]").href = profile.social.linkedin;
+  const aboutCopy = document.querySelector("[data-about]");
+  const aboutParagraphs = Array.isArray(profile.about) ? profile.about : [profile.about];
+  aboutCopy.innerHTML = aboutParagraphs
+    .filter(Boolean)
+    .map((paragraph) => `<p>${escapeHtml(paragraph)}</p>`)
+    .join("");
+  const aboutHeadline = document.querySelector("[data-about-headline]");
+  if (aboutHeadline && profile.aboutHeadline) {
+    aboutHeadline.textContent = profile.aboutHeadline;
+  }
+  document.querySelectorAll("[data-email]").forEach((el) => {
+    el.textContent = profile.email;
+  });
+  document.querySelectorAll("[data-email-link]").forEach((el) => {
+    el.href = `mailto:${profile.email}`;
+  });
+  document.querySelectorAll("[data-resume]").forEach((el) => {
+    el.href = profile.resume;
+  });
+  document.querySelectorAll("[data-github]").forEach((el) => {
+    el.href = profile.social.github;
+  });
+  document.querySelectorAll("[data-linkedin]").forEach((el) => {
+    el.href = profile.social.linkedin;
+  });
   document.querySelector("[data-year]").textContent = new Date().getFullYear();
 
   document.querySelector("[data-skills]").innerHTML = profile.skills
@@ -50,66 +60,106 @@ function renderProfile() {
     .join("");
 }
 
-function renderProjects() {
-  document.querySelector("[data-projects]").innerHTML = content.projects
+function renderEducation() {
+  const education = content.education || [];
+  const target = document.querySelector("[data-education]");
+  if (!target) return;
+
+  target.innerHTML = education
     .map(
-      (project) => `
-        <article class="project">
-          <span class="project-number">${escapeHtml(project.number)}</span>
-          <h3>${escapeHtml(project.title)}</h3>
-          <div class="project-copy-wrap">
-            <p class="project-copy">${escapeHtml(project.description)}</p>
-            <div class="project-tags">
-              ${project.tags.map((tag) => `<span>${escapeHtml(tag)}</span>`).join("")}
+      (entry) => `
+        <article class="education">
+          <div class="education-row">
+            <div>
+              <h4 class="education-school">${escapeHtml(entry.school)}</h4>
+              <p class="education-degree">${escapeHtml(entry.degree)}</p>
+              <p class="education-location">${escapeHtml(entry.location || "")}</p>
             </div>
+            <p class="education-dates">${escapeHtml(entry.dates)}</p>
           </div>
-          <a class="project-link" href="${escapeHtml(project.link)}" aria-label="${escapeHtml(project.linkLabel)}">↗</a>
         </article>
       `,
     )
     .join("");
 }
 
-function postMarkup(post, featured = false) {
-  if (featured) {
-    return `
-      <article class="featured-post" data-post-file="${escapeHtml(post.file)}" tabindex="0">
-        <div class="post-art" aria-hidden="true"><span class="pulse"></span></div>
-        <p class="post-category">${escapeHtml(post.category)} · Featured</p>
-        <h3>${escapeHtml(post.title)}</h3>
-        <p class="post-excerpt">${escapeHtml(post.excerpt)}</p>
-        <div class="post-meta">
-          <span>${formatDate(post.date)}</span><span>${escapeHtml(post.readTime)}</span>
-        </div>
-      </article>
-    `;
-  }
+function renderExperience() {
+  const experience = content.experience || [];
+  document.querySelector("[data-experience]").innerHTML = experience
+    .map((job) => {
+      const companyName = escapeHtml(job.company);
+      const companyLabel = job.url
+        ? `<a class="experience-company-link" href="${escapeHtml(job.url)}" target="_blank" rel="noreferrer">${companyName}<span aria-hidden="true"> ↗</span></a>`
+        : companyName;
+      const logo = job.logo
+        ? `<img class="experience-logo" src="${escapeHtml(job.logo)}" alt="${companyName} logo" width="44" height="44" loading="lazy" />`
+        : "";
 
-  return `
-    <article class="post-item" data-post-file="${escapeHtml(post.file)}" tabindex="0">
-      <p class="post-category">${escapeHtml(post.category)}</p>
-      <h3>${escapeHtml(post.title)}</h3>
-      <div class="post-meta">
-        <span>${formatDate(post.date)}</span><span>${escapeHtml(post.readTime)}</span>
-      </div>
-    </article>
-  `;
+      return `
+        <article class="experience">
+          <div class="experience-header">
+            ${logo}
+            <h4 class="experience-company">${companyLabel}</h4>
+          </div>
+          ${(job.roles || [])
+            .map(
+              (role) => `
+            <div class="experience-role">
+              <div class="experience-role-row">
+                <p class="experience-title">${escapeHtml(role.title)}</p>
+                <p class="experience-dates">${escapeHtml(role.dates)}</p>
+              </div>
+              <ul class="experience-bullets">
+                ${(role.bullets || [])
+                  .map((bullet) => `<li>${escapeHtml(bullet)}</li>`)
+                  .join("")}
+              </ul>
+            </div>
+          `,
+            )
+            .join("")}
+        </article>
+      `;
+    })
+    .join("");
 }
 
-function renderPosts() {
-  const featured = content.posts.find((post) => post.featured) || content.posts[0];
-  const remaining = content.posts.filter((post) => post !== featured);
-
-  document.querySelector("[data-featured-post]").innerHTML = featured
-    ? postMarkup(featured, true)
-    : "<p>No posts yet. Add one in content.js.</p>";
-  document.querySelector("[data-posts]").innerHTML = remaining
-    .map((post) => postMarkup(post))
+function renderProjects() {
+  document.querySelector("[data-projects]").innerHTML = content.projects
+    .map((project) => {
+      const isArticle = /\.md$/i.test(project.link || "");
+      const linkAttrs = isArticle
+        ? `href="#projects" data-post-file="${escapeHtml(project.link)}" role="button"`
+        : `href="${escapeHtml(project.link)}"`;
+      return `
+        <article class="project">
+          <span class="project-number">${escapeHtml(project.number)}</span>
+          <h3>${escapeHtml(project.title)}</h3>
+          <div class="project-copy-wrap">
+            <p class="project-copy">${escapeHtml(project.description)}</p>
+            <div class="project-tags">
+              ${project.tags
+                .filter(Boolean)
+                .map((tag) => `<span>${escapeHtml(tag)}</span>`)
+                .join("")}
+            </div>
+          </div>
+          <a class="project-link" ${linkAttrs} aria-label="${escapeHtml(project.linkLabel)}">↗</a>
+        </article>
+      `;
+    })
     .join("");
 }
 
 function inlineMarkdown(text) {
   return text
+    .replace(/!\[([^\]]*)\]\(([^)]+)\)/g, (_, alt, src) => {
+      const isVideo = /\.(mp4|webm|ogg|mov)(\?.*)?$/i.test(src);
+      if (isVideo) {
+        return `<video src="${src}" controls playsinline preload="metadata" title="${alt}"></video>`;
+      }
+      return `<img src="${src}" alt="${alt}" loading="lazy" />`;
+    })
     .replace(/`([^`]+)`/g, "<code>$1</code>")
     .replace(/\*\*([^*]+)\*\*/g, "<strong>$1</strong>")
     .replace(/\*([^*]+)\*/g, "<em>$1</em>")
@@ -234,7 +284,13 @@ async function openReader(file) {
   try {
     const response = await fetch(file);
     if (!response.ok) throw new Error("Article could not be loaded.");
-    readerContent.innerHTML = markdownToHtml(await response.text());
+    const basePath = file.includes("/") ? file.slice(0, file.lastIndexOf("/") + 1) : "";
+    let html = markdownToHtml(await response.text());
+    html = html.replace(
+      /(<(?:img|video)[^>]+src=")(?!https?:\/\/|\/|data:)([^"]+)(")/g,
+      `$1${basePath}$2$3`,
+    );
+    readerContent.innerHTML = html;
     document.querySelector(".reader-panel").scrollTop = 0;
   } catch {
     readerContent.innerHTML = `
@@ -253,13 +309,89 @@ function closeReader() {
   document.body.classList.remove("reader-open");
 }
 
+function getTheme() {
+  return document.documentElement.getAttribute("data-theme") === "light" ? "light" : "dark";
+}
+
+function syncThemeToggle(theme) {
+  const button = document.querySelector("[data-theme-toggle]");
+  const icon = document.querySelector("[data-theme-toggle-icon]");
+  const meta = document.querySelector('meta[name="theme-color"]');
+  if (!button || !icon) return;
+
+  const nextTheme = theme === "light" ? "dark" : "light";
+  // Show the destination theme: sun → light, moon → dark
+  icon.textContent = nextTheme === "light" ? "☀" : "☾";
+  button.setAttribute("aria-label", `Switch to ${nextTheme} theme`);
+  if (meta) {
+    meta.setAttribute("content", theme === "light" ? "#f3ebe0" : "#1a1612");
+  }
+}
+
+function setTheme(theme) {
+  const next = theme === "light" ? "light" : "dark";
+  document.documentElement.setAttribute("data-theme", next);
+  try {
+    localStorage.setItem("theme", next);
+  } catch (error) {
+    /* ignore quota / private mode */
+  }
+  syncThemeToggle(next);
+}
+
+function bindThemeToggle() {
+  const button = document.querySelector("[data-theme-toggle]");
+  if (!button) return;
+  syncThemeToggle(getTheme());
+  button.addEventListener("click", () => {
+    setTheme(getTheme() === "dark" ? "light" : "dark");
+  });
+}
+
+function bindHeaderScroll() {
+  const header = document.querySelector(".site-header");
+  const nav = document.querySelector(".site-nav");
+  if (!header) return;
+
+  let lastY = window.scrollY;
+  let ticking = false;
+
+  const update = () => {
+    const y = window.scrollY;
+    const menuOpen = nav?.classList.contains("is-open");
+
+    if (menuOpen || y < 40) {
+      header.classList.remove("is-hidden");
+    } else if (y > lastY + 6) {
+      header.classList.add("is-hidden");
+    } else if (y < lastY - 6) {
+      header.classList.remove("is-hidden");
+    }
+
+    lastY = y;
+    ticking = false;
+  };
+
+  window.addEventListener(
+    "scroll",
+    () => {
+      if (ticking) return;
+      ticking = true;
+      requestAnimationFrame(update);
+    },
+    { passive: true },
+  );
+}
+
 function bindInteractions() {
   const menuButton = document.querySelector(".menu-toggle");
   const nav = document.querySelector(".site-nav");
+  const header = document.querySelector(".site-header");
 
   menuButton.addEventListener("click", () => {
     const isOpen = nav.classList.toggle("is-open");
     menuButton.setAttribute("aria-expanded", String(isOpen));
+    if (isOpen) header?.classList.remove("is-hidden");
   });
   nav.querySelectorAll("a").forEach((link) =>
     link.addEventListener("click", () => {
@@ -269,10 +401,16 @@ function bindInteractions() {
   );
 
   document.querySelectorAll("[data-post-file]").forEach((post) => {
-    const open = () => openReader(post.dataset.postFile);
+    const open = (event) => {
+      event.preventDefault();
+      openReader(post.dataset.postFile);
+    };
     post.addEventListener("click", open);
     post.addEventListener("keydown", (event) => {
-      if (event.key === "Enter" || event.key === " ") open();
+      if (event.key === "Enter" || event.key === " ") {
+        event.preventDefault();
+        openReader(post.dataset.postFile);
+      }
     });
   });
 
@@ -282,18 +420,13 @@ function bindInteractions() {
   document.addEventListener("keydown", (event) => {
     if (event.key === "Escape") closeReader();
   });
-}
 
-function updateLocalTime() {
-  document.querySelector("#local-time").textContent = new Intl.DateTimeFormat("en", {
-    hour: "2-digit",
-    minute: "2-digit",
-  }).format(new Date());
+  bindThemeToggle();
+  bindHeaderScroll();
 }
 
 renderProfile();
+renderEducation();
+renderExperience();
 renderProjects();
-renderPosts();
 bindInteractions();
-updateLocalTime();
-setInterval(updateLocalTime, 60_000);
