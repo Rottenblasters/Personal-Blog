@@ -7,7 +7,7 @@
 window.PORTFOLIO_CONTENT = {
   profile: {
     name: "Anshul Singh",
-    role: "Full-Stack & Mobile Systems Engineer",
+    role: "ML Systems & Mobile Systems Engineer",
     location: "New York, NY",
     intro:
       "I build high-scale iOS, Android, and React Native platforms — focused on performance, reliability, and systems that ship at consumer scale.",
@@ -29,7 +29,7 @@ window.PORTFOLIO_CONTENT = {
       "Android & iOS",
       "Kotlin Multiplatform",
       "Performance",
-      "Full-Stack",
+      "ML Systems",
       "Applied AI",
       "System Design",
     ],
@@ -113,16 +113,16 @@ window.PORTFOLIO_CONTENT = {
   projects: [
     {
       number: "01",
-      title: "Product Detail Page",
+      title: "Product List Page",
       description:
-        "Myntra PDP walkthrough — high-intent product surface optimized for speed, clarity, and conversion from browse to cart.",
-      tags: ["Myntra", "Mobile", "PDP"],
-      link: "projects/PDP.md",
+        "Migrated Myntra's PLP Page to an internal server driven UI Framework called Layout Engine (LE).",
+      tags: ["Myntra", "Mobile", "PLP"],
+      link: "projects/PLP.md",
       linkLabel: "Watch the walkthrough",
     },
     {
       number: "02",
-      title: "Category Browsing",
+      title: "Category Browsing Page",
       description:
         "Layout Engine–driven category browsing revamp — responsive navigation and shorter paths to PDP on high-traffic journeys.",
       tags: ["Myntra", "Layout Engine", "Mobile"],
