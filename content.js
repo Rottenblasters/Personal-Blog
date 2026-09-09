@@ -20,14 +20,14 @@ window.PORTFOLIO_CONTENT = {
     email: "mail.anshul.singh@gmail.com",
     resume: "resume/Anshul_Singh_Resume.pdf",
     social: {
-      github: "https://github.com/",
+      github: "https://github.com/Rottenblasters",
       linkedin: "https://www.linkedin.com/in/anshul-singh-b58790197/",
     },
     skills: [
       "Mobile Engineering",
       "React Native",
       "Android & iOS",
-      "Kotlin Multiplatform",
+      "Java",
       "Performance",
       "ML Systems",
       "Applied AI",
