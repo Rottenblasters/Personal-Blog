@@ -4,10 +4,16 @@
 <head>
   <meta charset="UTF-8">
   <title>Anshul Singh Resume</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Source+Sans+3:ital,wght@0,400;0,600;0,700;1,700&display=swap"
+    rel="stylesheet"
+  />
   <style>
     @page {
       size: A4;
-      margin: 10mm 12mm;
+      margin: 10mm 5mm;
     }
 
     * {
@@ -15,47 +21,58 @@
     }
 
     body {
-      font-family: Calibri, Arial, Helvetica, sans-serif;
+      font-family: "Source Sans 3", "Segoe UI", Calibri, Arial, sans-serif;
       color: #111;
       margin: 0 auto;
-      padding: 0;
+      padding: 8px 10px;
       max-width: 210mm;
-      font-size: 9.5pt;
-      line-height: 1.22;
+      font-size: 9.6pt;
+      line-height: 1.32;
+      font-weight: 400;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    @media print {
+      body {
+        padding: 0;
+        max-width: none;
+      }
     }
 
     .header {
       text-align: center;
-      padding-bottom: 4px;
-      margin-bottom: 10px;
+      padding-bottom: 6px;
+      margin-bottom: 12px;
     }
 
     .name {
-      font-size: 18pt;
+      font-family: "Source Sans 3", "Segoe UI", Calibri, Arial, sans-serif;
+      font-size: 18.5pt;
       font-weight: 700;
-      letter-spacing: 0.5px;
-      margin: 0 0 2px;
+      letter-spacing: 0.6px;
+      margin: 0 0 3px;
       text-transform: uppercase;
-      line-height: 1.1;
+      line-height: 1.15;
     }
 
     .contact-info {
       font-size: 9pt;
       color: #222;
+      letter-spacing: 0.01em;
     }
 
     .section {
-      margin-bottom: 11px;
+      margin-bottom: 14px;
     }
 
     .section-title {
-      font-size: 10pt;
+      font-size: 10.5pt;
       font-weight: 700;
       text-transform: uppercase;
-      letter-spacing: 0.4px;
+      letter-spacing: 0.55px;
       border-bottom: 1px solid #444;
-      padding-bottom: 1px;
-      margin: 0 0 5px;
+      padding-bottom: 2px;
+      margin: 0 0 7px;
     }
 
     .summary {
@@ -64,10 +81,18 @@
     }
 
     .entry {
-      margin-bottom: 8px;
+      margin-bottom: 12px;
     }
 
     .entry:last-child {
+      margin-bottom: 0;
+    }
+
+    .education .entry {
+      margin-bottom: 5px;
+    }
+
+    .education .entry:last-child {
       margin-bottom: 0;
     }
 
@@ -94,7 +119,7 @@
 
     .org {
       font-weight: 700;
-      font-size: 10pt;
+      font-size: 10.2pt;
       margin: 0;
     }
 
@@ -105,8 +130,8 @@
     }
 
     .role-line {
-      font-size: 9.5pt;
-      margin: 1px 0 0;
+      font-size: 9.6pt;
+      margin: 3px 0 0;
     }
 
     .role-line .role {
@@ -116,21 +141,25 @@
 
     .degree {
       margin: 0;
-      font-size: 9pt;
+      font-size: 9.2pt;
       color: #333;
     }
 
     .sub-role {
+      margin-top: 8px;
+    }
+
+    .sub-role:first-of-type {
       margin-top: 3px;
     }
 
     ul {
-      margin: 1px 0 0;
+      margin: 3px 0 0;
       padding-left: 15px;
     }
 
     li {
-      margin-bottom: 1px;
+      margin-bottom: 2.5px;
       text-align: justify;
     }
 
@@ -139,7 +168,7 @@
     }
 
     .skills-line {
-      margin: 0 0 1px;
+      margin: 0 0 3px;
       text-align: justify;
     }
 
@@ -161,7 +190,6 @@
     <h1 class="name">Anshul Singh</h1>
     <div class="contact-info">
       New York City, USA | as22791@nyu.edu | +1 (929) 363-2336 |
-      https://www.linkedin.com/in/anshul-singh-b58790197/ |
       https://rottenblasters.github.io/Personal-Blog/
     </div>
   </header>
@@ -176,7 +204,7 @@
     </p>
   </section>
 
-  <section class="section">
+  <section class="section education">
     <h2 class="section-title">Education</h2>
     <div class="entry">
       <div class="row">
