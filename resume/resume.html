@@ -26,8 +26,8 @@
       margin: 0 auto;
       padding: 8px 10px;
       max-width: 210mm;
-      font-size: 9.6pt;
-      line-height: 1.32;
+      font-size: 9pt;
+      line-height: 1.3;
       font-weight: 400;
       -webkit-font-smoothing: antialiased;
     }
@@ -47,7 +47,7 @@
 
     .name {
       font-family: "Source Sans 3", "Segoe UI", Calibri, Arial, sans-serif;
-      font-size: 18.5pt;
+      font-size: 17.5pt;
       font-weight: 700;
       letter-spacing: 0.6px;
       margin: 0 0 3px;
@@ -56,7 +56,7 @@
     }
 
     .contact-info {
-      font-size: 9pt;
+      font-size: 8.5pt;
       color: #222;
       letter-spacing: 0.01em;
     }
@@ -66,7 +66,7 @@
     }
 
     .section-title {
-      font-size: 10.5pt;
+      font-size: 10pt;
       font-weight: 700;
       text-transform: uppercase;
       letter-spacing: 0.55px;
@@ -112,25 +112,25 @@
     .row-right {
       flex: 0 0 auto;
       white-space: nowrap;
-      font-size: 9pt;
+      font-size: 8.5pt;
       color: #333;
       text-align: right;
     }
 
     .org {
       font-weight: 700;
-      font-size: 10.2pt;
+      font-size: 9.7pt;
       margin: 0;
     }
 
     .meta {
       font-weight: 400;
-      font-size: 9.5pt;
+      font-size: 9pt;
       color: #333;
     }
 
     .role-line {
-      font-size: 9.6pt;
+      font-size: 9pt;
       margin: 3px 0 0;
     }
 
@@ -141,7 +141,7 @@
 
     .degree {
       margin: 0;
-      font-size: 9.2pt;
+      font-size: 8.7pt;
       color: #333;
     }
 
@@ -234,13 +234,13 @@
           <div class="row-right">Jan 2026 - July 2026</div>
         </div>
         <ul>
-          <li>Architected Armitage, a cross-platform mobile performance monitoring system using <strong>Kotlin Multiplatform (KMP)</strong>
+          <li>Architected Armitage, a cross-platform <strong>mobile performance monitoring system</strong> using <strong>Kotlin Multiplatform (KMP)</strong>
             and <strong>React Native JSI</strong> to track real-time UI/JS FPS, CPU, memory, and launch vitals across iOS and Android
-            with under <strong>2% CPU overhead</strong> and <strong>0.5%</strong> measurement deviation.</li>
-          <li>Modernized core mobile platform infrastructure by migrating Android to <strong>API 35</strong> (Edge-to-Edge and
-            <strong>16KB</strong> page-size support) and upgrading <strong>React Native</strong> to <strong>0.78.3</strong> with
-            <strong>React 19</strong>, accelerating overall application runtime.</li>
-          <li>Spearheaded the Layout Engine-driven Category Browsing page revamp, improving responsiveness, enabling scalable
+            with under 2% CPU overhead.</li>
+          <li>Modernized core mobile platform infrastructure by <strong>migrating Android to API 35 (Edge-to-Edge and
+            16KB page-size support)</strong> and <strong>upgrading React Native to 0.78.3 with
+            React 19</strong>, accelerating overall application runtime.</li>
+          <li>Spearheaded the Layout Engine-driven <strong>Category Browsing page revamp</strong>, improving responsiveness, enabling scalable
             experimentation and reducing user steps to PDP across high-traffic shopping journeys.</li>
         </ul>
       </div>
@@ -252,12 +252,21 @@
         </div>
         <ul>
           <li>Re-engineered Product Listing Page onto an internal Layout Engine framework with half-card and M-Now quick-commerce
-            integrations, cutting page latency by <strong>30%</strong> and lifting RPU/conversion by <strong>3%</strong>.</li>
+            integrations, <strong>cutting page latency by 30%</strong> and <strong>lifting RPU/conversion by 3%</strong>.</li>
+          <li>Integrated <strong>Android Patch Bundle Rollouts</strong> for React Native diff updates,
+            <strong>reducing JS bundle update payload size from ~14MB to &lt;1MB</strong> and improving rollout reliability while
+            lowering user data consumption.</li>
           <li>Engineered a remote configurable system for changing app icons and splash screens during major sale events,
-            driving a <strong>5-8%</strong> increase in organic traffic share by ensuring cohesive visual identity of the app.</li>
-          <li>Designed a Layout Engine-driven modal presentation system that dynamically triggers contextual half-cards based on
+            driving a <strong>5-8% increase in organic traffic share</strong> by ensuring cohesive visual identity of the app.</li>
+          <li>Designed a Layout Engine-driven <strong>modal presentation system that dynamically triggers contextual half-cards</strong> based on
             user interactions (scroll, load) while managing display logic via frequency capping, interval schedules, and
             A/B testing.</li>
+          <li>Built environment-agnostic staging support and implemented cold launch and page load tracing using
+            <strong>Firebase Performance Monitoring</strong>; proactively resolved <strong>30+ crashes, ANRs and runtime issues</strong>
+            across Android and iOS using <strong>Crashlytics</strong> and <strong>Bugsnag</strong>.</li>
+          <li>Built end-to-end <strong>attribution flows</strong> to classify user journeys into Search, Merchandising, Monetisation,
+            Recommendation and Organic buckets by implementing scalable attribution context propagation across navigations,
+            deeplinks and push notifications.</li>
         </ul>
       </div>
     </div>
@@ -270,16 +279,16 @@
           <div class="row-right">July 2023 - Sept 2024</div>
         </div>
         <ul>
-          <li>Delivered multiple <strong>0-to-1</strong> tax features across the consumer app and internal <strong>CPA</strong> dashboard,
-            owning frontend UI and backend low-level design with an extensible architecture for future product changes.</li>
+          <li>Delivered multiple 0-to-1 tax features across the consumer app and internal CPA dashboard,
+            <strong>owning frontend UI</strong> and <strong>backend low-level design</strong> with an extensible architecture for future product changes.</li>
           <li>Architected an automated OCR document upload pipeline integrating <strong>AWS Textract</strong> to extract data from tax documents,
-            streamlining the user experience and driving a <strong>4x</strong> increase in successful tax filing completions.</li>
+            streamlining the user experience and driving a <strong>4x increase in successful tax filing completions</strong>.</li>
           <li>Refactored the expense classification engine into a <strong>Celery</strong> and <strong>RabbitMQ</strong> distributed system
-            for horizontal scaling, cutting processing time for <strong>1K</strong> expenses by <strong>87%</strong>
-            (<strong>12 mins to 1.5 mins</strong>).</li>
+            for horizontal scaling, cutting processing time for 1K expenses by 87%
+            (12 mins to 1.5 mins).</li>
           <li>Developed client-side PDF verification tools (showing bounding boxes, autoscrolling to tax field) using
             <strong>Canvas API</strong> and <strong>Web Workers</strong> to offload heavy processing from main UI threads,
-            accelerating ops document verification throughput by <strong>40%</strong>.</li>
+            accelerating ops document verification throughput by 40%.</li>
         </ul>
       </div>
     </div>
@@ -295,7 +304,7 @@
           <li>Optimized <strong>Apache Solr</strong> indexing by restructuring schema fields, reducing search latency
             for high-volume catalog queries.</li>
           <li>Enhanced the <strong>CQRS</strong> synchronization pipeline by implementing automated cleanup cron jobs,
-            maintaining <strong>99.9%</strong> data consistency between primary write databases and read stores.</li>
+            maintaining 99.9% data consistency between primary write databases and read stores.</li>
         </ul>
       </div>
     </div>
